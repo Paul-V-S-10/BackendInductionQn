@@ -2,7 +2,7 @@
   "name": "backendinductionqn",
   "version": "1.0.0",
   "description": "Problem statement of IEDC induction",
-  "main": "index.js",
+  "main": "Server.js",
   "scripts": {
     "dev": "nodemon"
   },

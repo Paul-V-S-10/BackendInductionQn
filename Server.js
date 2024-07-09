@@ -221,7 +221,7 @@ app.get("/favorites/users/:userId", async (req, res) => {
 
     try {
         // Find the user by userId including populated favorites
-        const user = await User.findOne({ userId }).populate('favorites');
+        const user = await User.findOne({ userId: parseInt(userId) }).populate('favorites');
 
         // If user is not found, return 404 Not Found
         if (!user) {
@@ -232,7 +232,7 @@ app.get("/favorites/users/:userId", async (req, res) => {
         const formattedFavorites = {
             userId: user.userId,
             favorites: user.favorites.map(book => ({
-                id: book.id,
+                id: book.id,  // Assuming `id` is correctly populated and matches `Book` schema
                 title: book.title,
                 author: book.author,
                 pages: book.pages,
