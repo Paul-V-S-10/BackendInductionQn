@@ -4,6 +4,10 @@ const port = 4000;
 const bodyParser = require('body-parser');
 const { connect, Schema, model } = require('mongoose');
 
+app.get("", (req, res) => {
+    res.send("Hello World!");
+})
+
 app.listen(port, async () => {
     try {
         console.log(`Server is running ${port}`);
