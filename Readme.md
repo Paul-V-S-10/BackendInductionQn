@@ -54,7 +54,7 @@ The server will start on port 4000.
 
 ## API Endpoints
 
-1. Books
+## 1. Books
 - POST /Book
 
 Add a new book.
@@ -181,7 +181,7 @@ Response:
 }
 ```
 
-## Users
+## 2. Users
 
 - POST /users
 
