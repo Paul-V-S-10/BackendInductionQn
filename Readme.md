@@ -129,6 +129,7 @@ Response:
 http://localhost:4000/books/1
 
 Update details of a specific book by its ID.
+Note: Make sure you add a book after deleting it so that the book wont go empty. If so while updating through put request it shows an error of "Book not found".
 
 Request Body:
 ```bash
@@ -144,7 +145,7 @@ Response:
   "message": "Book updated successfully"
 }
 ```
-Note: Make sure you add a book after deleting it so that the book wont go empty. If so while updating through put request it shows an error of "Book not found".
+
 
 - POST /books/analytics
 
@@ -191,6 +192,7 @@ Response:
 http://localhost:4000/books/qrcode/1
 
 Generate a QR code for a specific book.
+Note: Make sure you have specific folders for storing qr code. Or it will show an error.
 
 Response:
 ```bash
@@ -199,7 +201,7 @@ Response:
     "qrcodeUrl": "https://example.com/qrcodes/1.png"
 }
 ```
-Note: Make sure you have specific folders for storing qr code. Or it will show an error.
+
 
 ## 2. Users
 
