@@ -4,10 +4,10 @@ This is a RESTful API for managing books and users’ favorite books. It support
 
 ## Table of Contents
 
-	•	Installation
-	•	Running the Server
-	•	API Endpoints
-	•	Books
+1. Installation
+2. Running the Server
+3. API Endpoints
+	1. Books
 	•	POST /Book
 	•	GET /books
 	•	GET /books/:id
@@ -16,7 +16,7 @@ This is a RESTful API for managing books and users’ favorite books. It support
 	•	GET /books/analytics/:bookId
 	•	POST /books/analytics
 	•	GET /books/qrcode/:bookId
-	•	Users
+	2. Users
 	•	POST /users
 	•	POST /favorites/users/:userId
 	•	GET /favorites/users/:userId
