@@ -47,7 +47,7 @@ mkdir -p public/qrcodes
 Start the server with the following command:
 
 ```bash
-node <your-main-file>.js
+npm run dev
 ```
 
 The server will start on port 4000.
