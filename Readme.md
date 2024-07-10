@@ -52,3 +52,221 @@ node <your-main-file>.js
 
 The server will start on port 4000.
 
+## API Endpoints
+
+1. Books
+- POST /Book
+
+Add a new book.
+
+Request Body:
+```bash
+{
+  "title": "1984",
+  "author": "George Orwell",
+  "pages": 328
+}
+```
+Response:
+```bash
+{
+  "id": 1,
+  "message": "Book added successfully"
+}
+```
+
+- GET /books
+
+Fetch all books.
+
+Response:
+```bash
+[
+  {
+    "id": 1,
+    "title": "1984",
+    "author": "George Orwell",
+    "pages": 328
+  }
+]
+```
+
+- GET /books/:id
+
+Fetch a specific book by its ID.
+
+Response:
+```bash
+{
+  "id": 1,
+  "title": "1984",
+  "author": "George Orwell",
+  "pages": 328
+}
+```
+
+- DELETE /books/:id
+
+Delete a book by its ID.
+
+Response:
+```bash
+{
+  "message": "Book deleted successfully"
+}
+```
+
+- PUT /books/:id
+
+Update details of a specific book by its ID.
+
+Request Body:
+```bash
+{
+  "title": "Brave New World (Updated)",
+  "author": "Aldous Huxley",
+  "pages": 270
+}
+```
+Response:
+```bash
+{
+  "message": "Book updated successfully"
+}
+```
+
+- GET /books/analytics/:bookId
+
+Get analytics for a specific book, such as the number of reads, most popular sections, etc.
+
+Response:
+```bash
+{
+  "bookId": 1,
+  "totalReads": 150,
+  "mostPopularSection": "Chapter 1",
+  "uniqueReaders": 75
+}
+```
+
+- POST /books/analytics
+
+Post analytics data for a specific book.
+
+Request Body:
+```bash
+{
+  "bookId": 1,
+  "totalReads": 150,
+  "mostPopularSection": "Chapter 1",
+  "uniqueReaders": 75
+}
+```
+Response:
+```bash
+{
+  "message": "Analytics data saved successfully"
+}
+```
+
+- GET /books/qrcode/:bookId
+
+Generate a QR code for a specific book.
+
+Response:
+```bash
+{
+  "bookId": 1,
+  "qrcodeUrl": "https://example.com/qrcodes/1.png"
+}
+```
+
+## Users
+
+- POST /users
+
+Create a new user.
+
+Request Body:
+```bash
+{
+  "userName": "JohnDoe"
+}
+```
+Response:
+```bash
+{
+  "userId": 1,
+  "userName": "JohnDoe"
+}
+```
+
+- POST /favorites/users/:userId
+
+Add a book to a user’s favorites.
+
+Request Body:
+```bash
+{
+  "bookId": 1
+}
+```
+Response:
+```bash
+{
+  "message": "Book added to favorites"
+}
+```
+
+- GET /favorites/users/:userId
+
+Fetch a user’s favorite books.
+
+Response:
+```bash
+{
+  "userId": 1,
+  "favorites": [
+    {
+      "id": 1,
+      "title": "1984",
+      "author": "George Orwell",
+      "pages": 328
+    }
+  ]
+}
+```
+
+- DELETE /favorites/users/:userId
+
+Remove a book from a user’s favorites.
+
+Request Body:
+```bash
+{
+  "bookId": 1
+}
+```
+Response:
+```bash
+{
+  "message": "Book removed from favorites"
+}
+```
+
+## Directory Structure
+
+	•	public/qrcodes: Directory to store generated QR code images.
+
+## Error Handling
+
+All endpoints return appropriate HTTP status codes and error messages in case of failures.
+
+## Dependencies
+
+	•	express
+	•	mongoose
+	•	body-parser
+	•	qrcode
+	•	path
+	•	fs/promises
