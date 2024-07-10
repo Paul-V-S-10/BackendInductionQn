@@ -457,3 +457,48 @@ app.get('/books/qrcode/:bookId', async (req, res) => {
         res.status(500).send({ error: 'Failed to generate QR code' });
     }
 });
+
+
+// PUT endpoint to share a book with another user
+app.put("/favorites/users/:userId", async (req, res) => {
+    const { userId } = req.params;
+    const { userId: recipientUserId, bookId } = req.body;
+
+    try {
+        // Check if the sender user exists
+        const senderUser = await User.findOne({ userId });
+        if (!senderUser) {
+            return res.status(404).send({ message: "Sender user not found" });
+        }
+
+        // Check if the recipient user exists
+        const recipientUser = await User.findOne({ userId: recipientUserId });
+        if (!recipientUser) {
+            return res.status(404).send({ message: "Recipient user not found" });
+        }
+
+        // Check if the book exists
+        const book = await Book.findOne({ id: bookId });
+        if (!book) {
+            return res.status(404).send({ message: "Book not found" });
+        }
+
+        // Check if the sender has the book in favorites
+        if (!senderUser.favorites.includes(book._id)) {
+            return res.status(400).send({ message: "Book not in sender's favorites" });
+        }
+
+        // Check if the recipient already has the book in favorites
+        if (recipientUser.favorites.includes(book._id)) {
+            return res.status(400).send({ message: "Book already in recipient's favorites" });
+        }
+
+        // Add the book to the recipient's favorites
+        recipientUser.favorites.push(book._id);
+        await recipientUser.save();
+
+        res.send({ message: "Book shared successfully" });
+    } catch (error) {
+        res.status(500).send({ error: error.message });
+    }
+});
