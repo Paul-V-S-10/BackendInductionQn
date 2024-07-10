@@ -8,19 +8,19 @@ This is a RESTful API for managing books and users’ favorite books. It support
 2. Running the Server
 3. API Endpoints
 	1. Books
-	•	POST /Book
-	•	GET /books
-	•	GET /books/:id
-	•	DELETE /books/:id
-	•	PUT /books/:id
-	•	GET /books/analytics/:bookId
-	•	POST /books/analytics
-	•	GET /books/qrcode/:bookId
+        1. POST /Book
+	    2. GET /books
+	    3. GET /books/:id
+	    4. DELETE /books/:id
+	    5. PUT /books/:id
+	    6. GET /books/analytics/:bookId
+	    7. POST /books/analytics
+	    8. GET /books/qrcode/:bookId
 	2. Users
-	•	POST /users
-	•	POST /favorites/users/:userId
-	•	GET /favorites/users/:userId
-	•	DELETE /favorites/users/:userId
+	    1. POST /users
+	    2. POST /favorites/users/:userId
+	    3. GET /favorites/users/:userId
+	    4. DELETE /favorites/users/:userId
 
 ## Installation
 
